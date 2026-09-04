@@ -1,4 +1,4 @@
-# IBM Software Hub 5.3.1.5 to 5.3.1.11 Patch Runbook
+# IBM Software Hub 5.3.1.4 to 5.3.1.11 Patch Runbook
 
 ## Patch Context
 
