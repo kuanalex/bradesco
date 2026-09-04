@@ -40,6 +40,8 @@ cpd-cli manage list-deployed-components \
 --all=true
 ```
 
+---
+
 ## Checking for new patches
 
 Restart the olm-utils container
@@ -145,6 +147,8 @@ Apply the cluster-scoped resources commands returned in the terminal (make sure 
 oc apply -f /root/cpd-cli-workspace/olm-utils-workspace/work/cluster_scoped_resources.yaml --force-conflicts --server-side
 ```
 
+---
+
 ## Apply Patch to Services and Components
 
 **IBM Documentation:** [Applying a patch](https://www.ibm.com/docs/en/software-hub/5.3.x?topic=patches-applying-patch)
@@ -154,7 +158,6 @@ oc apply -f /root/cpd-cli-workspace/olm-utils-workspace/work/cluster_scoped_reso
 #### 1. Verify Prerequisites
 
 Before applying the patch, verify environment variables and component status:
-
 ```bash
 # Set patch ID
 export PATCH_ID=11
@@ -194,12 +197,13 @@ Check all components are ready
 cpd-cli manage get-cr-status --cpd_instance_ns=${PROJECT_CPD_INST_OPERANDS}
 ```
 
+---
+
 #### 2. Apply Patch to Services and Components
 
 **Note:** This command applies patches to ALL installed services and components and runs for an extended period (typically 30-90 minutes). Using `nohup` ensures the command continues if the terminal session disconnects.
 
 **Applying specific patch:**
-
 ```bash
 nohup cpd-cli manage apply-patch \
 --release=5.3.1 \
@@ -210,30 +214,32 @@ nohup cpd-cli manage apply-patch \
 --image_pull_secret=${IMAGE_PULL_SECRET} > patch_output.log 2>&1 &
 ```
 
+---
+
 #### 3. Monitor Patching Progress
 
 Monitor the output log:
-
 ```bash
 tail -f -n 100 patch_output.log
 ```
 
 Check for completion message: `[SUCCESS] ... The apply-patch command ran successfully.`
 
+---
 
 #### 4. Confirm Operands Status
 
 Confirm that the status of all operands is `Completed`:
-
 ```bash
 cpd-cli manage get-cr-status --cpd_instance_ns=${PROJECT_CPD_INST_OPERANDS}
 ```
 
 Check for any pods not in Running state:
-
 ```bash
 oc get po -A -owide | egrep -v '([0-9])/\1' | egrep -v 'Completed'
 ```
+
+---
 
 # Post-Patch Tasks
 
@@ -242,14 +248,15 @@ oc get po -A -owide | egrep -v '([0-9])/\1' | egrep -v 'Completed'
 #### 1. Verify Existing Profile
 
 Confirm your CPD profile is set up and working:
-
 ```bash
 cpd-cli service-instance list --profile=${CPD_PROFILE_NAME}
+```
+
+---
 
 #### 2. Patch Analytics Engine Instances
 
 To upgrade Analytics Engine powered by Apache Spark service instances:
-
 ```bash
 cpd-cli service-instance upgrade \
   --service-type=spark \
@@ -257,10 +264,11 @@ cpd-cli service-instance upgrade \
   --all
 ```
 
-#### 4. Verify CR, Service Instance and Pod Statuses
+---
+
+#### 3. Verify CR, Service Instance and Pod Statuses
 
 Confirm the platform and all components are running the patched version:
-
 ```bash
 cpd-cli manage get-cr-status --cpd_instance_ns=${PROJECT_CPD_INST_OPERANDS}
 ```
@@ -273,7 +281,6 @@ cpd-cli service-instance list --profile=${CPD_PROFILE_NAME}
 ```
 
 Check for pods not in Running state:
-
 ```bash
 oc get po -A -owide | egrep -v '([0-9])/\1' | egrep -v 'Completed'
 ```
