@@ -54,9 +54,9 @@ Run the list-patch command to generate a list of patches are available for the i
 cpd-cli manage list-patch
 ```
 
-For example...
+Run the case-download command returned in the terminal...
 ```bash
-cpd-cli manage case-download --components=${COMPONENTS_TO_PATCH} --release=5.3.1 --patch_id=11
+cpd-cli manage case-download --components=${<components list returned...>} --release=5.3.1 --patch_id=11
 ```
    
 Mirror images to registry (if air-gapped):
