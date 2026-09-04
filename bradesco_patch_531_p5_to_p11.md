@@ -12,7 +12,7 @@
 
 ### Components to be Patched
 
-**IBM Software Hub Components (6):** cpd_platform,wkc,datastage_ent,ws_pipelines,ws,ws_runtimes
+**IBM Software Hub Components (6):** cpd_platform,wkc,datastage_ent,plus,ws_pipelines,ws,ws_runtimes
 
 ---
 
