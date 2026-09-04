@@ -84,12 +84,12 @@ If these prerequisites are not met, please complete them before proceeding with 
 Generate the `cluster_scoped_resources.yaml` file for the scheduling service:
 ```bash
 cpd-cli manage case-download \
-  --components=${COMPONENTS_TO_PATCH} \
-  --release=5.3.1 \
-  --patch_id=${PATCH_ID} \
-  --operator_ns=${PROJECT_CPD_INST_OPERATORS} \
-  --case_download=false \
-  --cluster_resources=true
+--components=scheduler \
+--release=5.3.1 \
+--patch_id=${PATCH_ID} \
+--scheduler_ns=${PROJECT_SCHEDULING_SERVICE} \
+--case_download=false \
+--cluster_resources=true
 ```
 
 Apply the cluster-scoped resources commands returned in the terminal (make sure the correct cpd-cli-workspace path is referenced):
