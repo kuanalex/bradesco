@@ -3,8 +3,11 @@
 ## Patch Context
 
 **Customer:** Banco Bradesco
+
 **Environment:** Dev
+
 **Patch Date:** 2026-09-04
+
 **Target Patch:** Patch 11
 
 ### Components to be Patched
