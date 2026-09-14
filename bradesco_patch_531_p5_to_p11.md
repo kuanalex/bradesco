@@ -1,4 +1,4 @@
-# IBM Software Hub 5.3.1.4 to 5.3.1.11 Patch Runbook
+# IBM Software Hub 5.3.1.11 to 5.3.1.13 Patch Runbook
 
 ## Patch Context
 
@@ -6,13 +6,13 @@
 
 **Environment:** Dev
 
-**Patch Date:** 2026-09-04
+**Patch Date:** 2026-09-15
 
-**Target Patch:** Patch 11
+**Target Patch:** Patch 13
 
 ### Components to be Patched
 
-**IBM Software Hub Components (6):** cpd_platform,wkc,datastage_ent,plus,ws_pipelines,ws,ws_runtimes
+**IBM Software Hub Components:** cpd_platform,wkc,datastage_ent,plus,ws_pipelines,ws,ws_runtimes
 
 ---
 
@@ -56,7 +56,7 @@ cpd-cli manage list-patch
 
 Run the case-download command returned in the terminal...
 ```bash
-cpd-cli manage case-download --components=${<components list returned...>} --release=5.3.1 --patch_id=11
+cpd-cli manage case-download --components=${<components list returned...>} --release=5.3.1 --patch_id=13
 ```
    
 Mirror images to registry (if air-gapped):
@@ -160,7 +160,7 @@ oc apply -f /root/cpd-cli-workspace/olm-utils-workspace/work/cluster_scoped_reso
 Before applying the patch, verify environment variables and component status:
 ```bash
 # Set patch ID
-export PATCH_ID=11
+export PATCH_ID=13
 
 # Verify environment variables
 echo $PROJECT_CPD_INST_OPERATORS
